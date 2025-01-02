@@ -5,3 +5,9 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+module.exports = {
+  images: {
+    domains: ['cloud-29vkp3oc1-hack-club-bot.vercel.app'],
+  },
+}

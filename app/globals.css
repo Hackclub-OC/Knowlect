@@ -9,6 +9,13 @@
   --text-primary: #000000;
 }
 
+:root.dark { 
+  --accnet-color: #2158CE;  
+  --accent-foreground: #A5C1FE;
+  --background: #0B0B0D;
+  --text-primary: #ffffff;
+}
+
 body {
   background-color: var(--background);
   background-image: 
