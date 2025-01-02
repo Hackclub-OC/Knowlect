@@ -50,7 +50,7 @@ interface HeaderProps {
   userName: string;
 }
 
-export function Header({ userName }: HeaderProps) {
+function Header({ userName }: HeaderProps) {
   return (
     <header className="flex justify-between items-center">
       <h1 className="text-xl sm:text-2xl md:text-3xl">Hello, {userName}!</h1>
@@ -84,7 +84,7 @@ interface CourseCardProps {
   imageUrl: string;
 }
 
-export function CourseCard({ title, imageUrl }: CourseCardProps) {
+function CourseCard({ title, imageUrl }: CourseCardProps) {
   return (
     <div className="relative overflow-hidden rounded-3xl shadow-lg w-full max-w-[350px] aspect-square">
       <div className="h-full w-full">
@@ -108,4 +108,3 @@ export function CourseCard({ title, imageUrl }: CourseCardProps) {
     </div>
   );
 }
-
