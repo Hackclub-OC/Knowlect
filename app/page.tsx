@@ -1,28 +1,18 @@
-import { Inter } from "next/font/google";
 import React from "react";
 import Link from "next/link";
-import { PT_Sans_Caption as Sansation } from "next/font/google";
-import {
-  RegisterLink,
-  LoginLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/core/button";
-
-const sansation = Sansation({ subsets: ["latin"], weight: "400" });
-const inter = Inter({ subsets: ["latin"] });
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <main
-      className={`${inter.className} text-[var(--text-primary)] min-h-screen flex flex-col`}
-    >
+    <main className={`text-[var(--text-primary)] min-h-screen flex flex-col`}>
       <Navbar />
       <div className="flex-grow flex items-center justify-center">
         <Header />
       </div>
-      <footer className="text-center py-4 text-sm text-[var(--text-primary)] opacity-60">
-        © 2025 Knowlect. All rights reserved.
-      </footer>
+      <Footer />{" "}
     </main>
   );
 }
@@ -64,32 +54,5 @@ const Header: React.FC = () => {
         </Link>
       </div>
     </header>
-  );
-};
-const Navbar: React.FC = () => {
-  return (
-    <nav className="flex justify-between items-center py-3 sm:py-4 md:py-6 px-4 sm:px-6 md:px-8 backdrop-blur-md">
-      <div
-        className={`${sansation.className} text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-wide`}
-      >
-        Knowlect
-      </div>
-      <div className="space-x-2 sm:space-x-4">
-        <LoginLink postLoginRedirectURL="/learn">
-          <Button variant="outline" size="small" className="text-xs sm:text-sm">
-            Log In
-          </Button>
-        </LoginLink>
-        <RegisterLink postLoginRedirectURL="/learn">
-          <Button
-            variant="gradient"
-            size="small"
-            className="text-xs sm:text-sm"
-          >
-            Sign Up
-          </Button>
-        </RegisterLink>
-      </div>
-    </nav>
   );
 };
