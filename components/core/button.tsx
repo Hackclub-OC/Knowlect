@@ -1,4 +1,4 @@
-import {cn} from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface ButtonProps {
   variant: "outline" | "gradient";
@@ -7,12 +7,15 @@ interface ButtonProps {
   className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export function buttonVariants({
   variant,
   size,
-  children,
-  className,
-}) => {
+  className = "",
+}: {
+  variant: "outline" | "gradient";
+  size: "small" | "large";
+  className?: string;
+}) {
   const baseClasses =
     "font-inter font-medium transition-all duration-200 text-[var(--text-primary)]";
   const sizeClasses = {
@@ -26,14 +29,14 @@ export const Button: React.FC<ButtonProps> = ({
     gradient:
       "bg-gradient-to-b from-[var(--accent-foreground)] to-[var(--accent-color)] hover:opacity-90",
   };
+  return cn(baseClasses, sizeClasses[size], variantClasses[variant], className);
+}
 
-  return (
-    <button
-      className={cn(
-        `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`
-      )}
-    >
-      {children}
-    </button>
-  );
+export const Button: React.FC<ButtonProps> = ({
+  variant,
+  size,
+  children,
+  className,
+}) => {
+  return <button className={buttonVariants({ variant, size, className })}>{children}</button>;
 };

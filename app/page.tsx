@@ -1,11 +1,24 @@
-import React from "react";
+"use client";
+import { useEffect } from "react";
 import Link from "next/link";
-import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+// import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/core/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { useRouter } from "next/navigation";
+import { buttonVariants } from "@/components/core/button";
 
 export default function Home() {
+  const { isAuthenticated } = useKindeBrowserClient();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/learn");
+    }
+  }, [isAuthenticated, router]);
+
   return (
     <main className={`text-[var(--text-primary)] min-h-screen flex flex-col`}>
       <Navbar />
@@ -43,14 +56,15 @@ const Header: React.FC = () => {
         >
           See Demo
         </Button>
-        <Link href="/learn">
-          <Button
-            variant="gradient"
-            size="large"
-            className="shadow-lg md:px-14 sm:px-10 hover:shadow-xl "
-          >
-            Get Started
-          </Button>
+        <Link
+          href="/learn"
+          className={buttonVariants({
+            variant: "gradient",
+            size: "large",
+            className: "shadow-lg md:px-14 sm:px-10 hover:shadow-xl ",
+          })}
+        >
+          Get Started
         </Link>
       </div>
     </header>

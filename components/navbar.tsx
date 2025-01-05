@@ -3,7 +3,7 @@ import {
   RegisterLink,
   LoginLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
-import { Button } from "@/components/core/button";
+import { buttonVariants } from "@/components/core/button";
 
 
 const sansation = Sansation({ subsets: ["latin"], weight: "400" });
@@ -16,19 +16,11 @@ export const Navbar: React.FC = () => {
           Knowlect
         </div>
         <div className="space-x-2 sm:space-x-4">
-          <LoginLink postLoginRedirectURL="/learn">
-            <Button variant="outline" size="small" className="text-xs sm:text-sm">
+          <LoginLink postLoginRedirectURL="/learn" className={buttonVariants({variant: "outline", size: "small", className: "text-xs sm:text-sm"})}>
               Log In
-            </Button>
           </LoginLink>
-          <RegisterLink postLoginRedirectURL="/learn">
-            <Button
-              variant="gradient"
-              size="small"
-              className="text-xs sm:text-sm"
-            >
+          <RegisterLink postLoginRedirectURL="/learn"  className={buttonVariants({variant: "gradient", size: "small", className: "text-xs sm:text-sm"})}>
               Sign Up
-            </Button>
           </RegisterLink>
         </div>
       </nav>
