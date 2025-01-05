@@ -74,7 +74,11 @@ function Header({ userName }: HeaderProps) {
     <header className="flex justify-between items-center">
       <h1 className="text-xl sm:text-2xl md:text-3xl">Hello, {userName}!</h1>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger
+          asChild
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium 
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-color)] focus-visible:ring-offset-2"
+        >
           <Button
             variant="ghost"
             className="active:border-blue-500 focus:ring-[var(--accent-color)] focus:ring-offset-2 relative h-10 w-10 sm:h-12 sm:w-12 rounded-full overflow-hidden focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -126,30 +130,16 @@ function CourseCard({ title, imageUrl, path }: CourseCardProps) {
         <h3 className="text-xl sm:text-2xl md:text-3xl text-primary z-10">
           {title}
         </h3>
-                <Button
-          asChild
-          className="w-full rounded-full bg-[#EEEEEE] text-foreground hover:bg-[#EEEEEE]/90 active:ring-2 active:ring-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg md:text-xl lg:text-3xl px-4 sm:px-6 py-2 sm:py-3 h-auto z-10"
-          >
-          <Link href={`/learn/${path}`}>Start</Link>
-        </Button>
+        <Link
+          href={`/learn/${path}`}
+          className="relative w-full rounded-full bg-[#EEEEEE] text-foreground hover:bg-[#EEEEEE]/90 
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:ring-offset-2 
+            active:ring-2 active:ring-blue-500 text-lg md:text-xl lg:text-3xl 
+            px-4 sm:px-6 py-2 sm:py-3 h-auto z-20 text-center"
+        >
+          Start
+        </Link>
       </div>
     </div>
   );
 }
-
-// link with shadcn button props (not working properly )
-          {/* <Link
-            href={`/learn/${path}`}
-            className={buttonVariants({
-              variant: "default",
-              className:
-                "w-full rounded-full bg-[#EEEEEE] text-foreground hover:bg-[#EEEEEE]/90 active:ring-2 active:ring-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg md:text-xl lg:text-3xl px-4 sm:px-6 py-2 sm:py-3 h-auto z-10",
-            })}
-          >
-            Start        <Button
-          asChild
-          className="w-full rounded-full bg-[#EEEEEE] text-foreground hover:bg-[#EEEEEE]/90 active:ring-2 active:ring-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg md:text-xl lg:text-3xl px-4 sm:px-6 py-2 sm:py-3 h-auto z-10"
-        >
-          <Link href={`/learn/${path}`}>Start</Link>
-        </Button>
-          </Link> */}
