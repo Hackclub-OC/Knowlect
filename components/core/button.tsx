@@ -25,9 +25,9 @@ export function buttonVariants({
   };
   const variantClasses = {
     outline:
-      "border-2 border-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-white",
+      "border-2 border-[var(--accent-color)] hover:bg-gradient-to-b hover:from-blue-200 focus:outline-none focus:ring-[2.5px] focus:ring-[var(--accent-color)] focus:ring-offset-2 hover:to-blue-600 ",
     gradient:
-      "bg-gradient-to-b from-[var(--accent-foreground)] to-[var(--accent-color)] hover:opacity-90",
+      "bg-gradient-to-b from-[var(--accent-foreground)] focus:outline-none focus:ring-[2.5px] focus:ring-[var(--accent-color)] focus:ring-offset-2  to-[var(--accent-color)] hover:opacity-90",
   };
   return cn(baseClasses, sizeClasses[size], variantClasses[variant], className);
 }

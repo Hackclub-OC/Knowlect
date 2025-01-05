@@ -13,7 +13,6 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { NeedAuth } from "@/components/needauth";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 
 export default function LearningPage() {
   const { isAuthenticated, user } = useKindeBrowserClient();
@@ -78,7 +77,7 @@ function Header({ userName }: HeaderProps) {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="active:border-blue-500 relative h-10 w-10 sm:h-12 sm:w-12 rounded-full overflow-hidden focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="active:border-blue-500 focus:ring-[var(--accent-color)] focus:ring-offset-2 relative h-10 w-10 sm:h-12 sm:w-12 rounded-full overflow-hidden focus:ring-2 focus:ring-blue-500 focus:outline-none"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500" />
           </Button>
