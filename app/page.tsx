@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import Link from "next/link";
-// import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/core/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -56,16 +55,16 @@ const Header: React.FC = () => {
         >
           See Demo
         </Button>
-        <Link
-          href="/learn"
-          className={buttonVariants({
-            variant: "gradient",
-            size: "large",
-            className: "shadow-lg md:px-14 sm:px-10 hover:shadow-xl ",
-          })}
-        >
-          Get Started
-        </Link>
+          <RegisterLink
+            postLoginRedirectURL="/learn"
+            className={buttonVariants({
+              variant: "gradient",
+              size: "large",
+              className: "shadow-lg md:px-14 sm:px-10 hover:shadow-xl ",
+            })}
+          >
+            Get Started
+          </RegisterLink>
       </div>
     </header>
   );

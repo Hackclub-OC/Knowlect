@@ -132,7 +132,7 @@ function CourseCard({ title, imageUrl, path }: CourseCardProps) {
         </h3>
         <Link
           href={`/learn/${path}`}
-          className="relative w-full rounded-full bg-[#EEEEEE] text-foreground hover:bg-[#EEEEEE]/90 
+          className="relative w-full rounded-full bg-[#EEEEEE] dark:bg-neutral-950  text-foreground hover:bg-[#EEEEEE]/90 
             focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:ring-offset-2 
             active:ring-2 active:ring-blue-500 text-lg md:text-xl lg:text-3xl 
             px-4 sm:px-6 py-2 sm:py-3 h-auto z-20 text-center"
