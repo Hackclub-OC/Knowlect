@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { Definition } from "@/components/definition"
 import { Button } from "@/components/ui/button"
 import { Inter } from "next/font/google"
@@ -218,15 +219,9 @@ export default function DoubloonsExplained() {
   return (
     <>
       <div className="relative">
-        <a href="https://hackclub.com" target="_blank" rel="noreferrer">
-          <Image
-            src="/hc-flag.png"
-            width={200}
-            height={200}
-            alt="HC Flag"
-            className="absolute top-0 left-5 w-36 h-20 hover:animate-[wave-flag_0.5s_linear_infinite_alternate]"
-          />
-        </a>
+        <Link href="https://hackclub.com" target="_blank" rel="noreferrer">
+          Knowlect
+        </Link>
       </div>
       <div className={`lg:hidden flex items-center justify-center h-screen text-center ${inter.className}`}>
         Doubloons Explained is not optimized for mobile. Please view on a desktop. (sorry it{"'"}s inconvenient but I
