@@ -8,22 +8,11 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import { NeedAuth } from "@/components/needauth"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import { getCourses } from "@/lib/courses"
 
 export default function LearningPage() {
   const { isAuthenticated, user } = useKindeBrowserClient()
-
-  const courses = [
-    {
-      title: "AI Agents ",
-      imageUrl: "https://cloud-29vkp3oc1-hack-club-bot.vercel.app/0rectangle_5__1_.png",
-      path: "ai-agents",
-    },
-    {
-      title: "RAG Workflows",
-      imageUrl: "https://cloud-29vkp3oc1-hack-club-bot.vercel.app/1rectangle_5.png",
-      path: "rag-workflows",
-    },
-  ]
+  const courses = getCourses()
 
   if (isAuthenticated) {
     return (
@@ -35,7 +24,7 @@ export default function LearningPage() {
               <h2 className="text-xl md:text-3xl mb-24">Get ahead in AI and Agentic Workflow</h2>
               <div className="grid gap-8 sm:gap-12 grid-cols-1 md:grid-cols-2 justify-items-center max-w-4xl mx-auto">
                 {courses.map((course, index) => (
-                  <CourseCard key={index} title={course.title} imageUrl={course.imageUrl} path={course.path} />
+                  <CourseCard key={index} title={course.title} imageUrl={course.imageUrl} slug={course.slug} />
                 ))}
               </div>
             </main>
@@ -86,10 +75,10 @@ function Header({ userName }: HeaderProps) {
 interface CourseCardProps {
   title: string
   imageUrl: string
-  path: string
+  slug: string
 }
 
-function CourseCard({ title, imageUrl, path }: CourseCardProps) {
+function CourseCard({ title, imageUrl, slug }: CourseCardProps) {
   return (
     <div className="relative overflow-hidden rounded-3xl shadow-lg w-full max-w-[350px] aspect-square">
       <div className="h-full w-full">
@@ -105,7 +94,7 @@ function CourseCard({ title, imageUrl, path }: CourseCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-between p-4 sm:p-6">
         <h3 className="text-xl sm:text-2xl md:text-3xl text-primary z-10">{title}</h3>
         <Link
-          href={`/learn/${path}`}
+          href={`/learn/${slug}`}
           className="relative w-full rounded-full bg-[#EEEEEE] dark:bg-neutral-950  text-foreground hover:bg-[#EEEEEE]/90 
             focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:ring-offset-2 
             active:ring-2 active:ring-blue-500 text-lg md:text-xl lg:text-3xl 

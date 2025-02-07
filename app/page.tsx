@@ -1,12 +1,13 @@
 "use client";
+import { Footer as Footer } from "@/components/footer"
 import { useEffect } from "react";
 import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/core/button";
 import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/navigation";
 import { buttonVariants } from "@/components/core/button";
+import Link from "next/link";
 
 export default function Home() {
   const { isAuthenticated } = useKindeBrowserClient();
@@ -55,17 +56,18 @@ const Header: React.FC = () => {
         >
           See Demo
         </Button>
-          <RegisterLink
-            postLoginRedirectURL="/learn"
-            className={buttonVariants({
-              variant: "gradient",
-              size: "large",
-              className: "shadow-lg md:px-14 sm:px-10 hover:shadow-xl ",
-            })}
-          >
-            Get Started
-          </RegisterLink>
+        <RegisterLink
+          postLoginRedirectURL="/learn"
+          className={buttonVariants({
+            variant: "gradient",
+            size: "large",
+            className: "shadow-lg md:px-14 sm:px-10 hover:shadow-xl ",
+          })}
+        >
+          Get Started
+        </RegisterLink>
       </div>
     </header>
   );
 };
+

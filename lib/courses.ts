@@ -1,4 +1,5 @@
-import fs from "fs"
+  'use server'
+import { readdir } from 'fs/promises'
 import path from "path"
 
 export interface Course {
@@ -7,19 +8,25 @@ export interface Course {
   slug: string
 }
 
-export function getCourses(): Course[] {
+export async function getCourses(): Promise<Course[]> {
+  // Mark as server-side code
+
+  
   const coursesDir = path.join(process.cwd(), "app/learn/courses")
-  const courseFiles = fs.readdirSync(coursesDir)
+  const courseFiles = await readdir(coursesDir)
 
-  return courseFiles.map((file) => {
-    const slug = path.parse(file).name
-    const { title, imageUrl } = require(`../app/learn/courses/${file}`).metadata
+  const courses = await Promise.all(
+    courseFiles.map(async (file) => {
+      const slug = path.parse(file).name
+      const { title, imageUrl } = await import(`../app/learn/courses/${file}`).then(m => m.metadata)
 
-    return {
-      title,
-      imageUrl,
-      slug,
-    }
-  })
+      return {
+        title,
+        imageUrl,
+        slug,
+      }
+    })
+  )
+
+  return courses
 }
-
